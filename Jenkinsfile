@@ -10,7 +10,7 @@ pipeline {
         }
       }
       steps {
-      	echo "hello ramanji"
+      	sh 'mvn clean install'
       }
     }
     stage('Docker Build') {
