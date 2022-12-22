@@ -36,12 +36,10 @@ pipeline {
 	echo 'Push Image Completed'       
       }           
     }
-    post{
-		always {
-		  sh 'sudo docker logout'
-		  }
-		}
+	post{
+    always {  
+      sh 'docker logout' 
     }      
-  } 	
+  }
   }
 }
