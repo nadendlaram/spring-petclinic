@@ -19,7 +19,6 @@ pipeline {
         sh 'sudo docker -v'
         sh 'sudo docker ps'
         sh 'sudo docker images'
-      	#sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
       }
     }
   }
