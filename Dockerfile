@@ -1,4 +1,7 @@
 FROM anapsix/alpine-java
 LABEL maintainer="nadendlaram.devops@gmail.com"
-COPY /target/spring-petclinic-1.5.1.jar /home/spring-petclinic-1.5.1.jar
-CMD ["java","-jar","/home/spring-petclinic-1.5.1.jar"]
+RUN apt-get install tree
+RUN mkdir ramanji
+RUN cd ramanji
+RUN touch ram1 ram2 ram3 ram4 ram5 ram6 
+RUN ls -al
