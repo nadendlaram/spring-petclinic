@@ -19,13 +19,13 @@ pipeline {
     stage('Docker Build') {
     	agent any
       steps {
+        sh 'sudo docker logout' 
       	sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
       }
     }
 	stage('Login to Docker Hub') { 
 		agent any
-      steps{  
-        sh 'sudo docker logout'     
+      steps{      
 	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                 
 	echo 'Login Completed'                
       }           
