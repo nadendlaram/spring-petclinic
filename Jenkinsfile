@@ -1,4 +1,5 @@
 #!groovy
+
 pipeline {
 	agent none
   stages {
@@ -6,11 +7,16 @@ pipeline {
     	agent {
       	any {
         	image 'maven:3.5.0'
-             
         }
       }
       steps {
       	echo "hello ramanji"
+      }
+    }
+    stage('Docker Build') {
+    	agent any
+      steps {
+      	sh 'docker build -t shanem/spring-petclinic:latest .'
       }
     }
   }
