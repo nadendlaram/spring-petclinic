@@ -1,5 +1,6 @@
 FROM anapsix/alpine-java
 LABEL maintainer="nadendlaram.devops@gmail.com"
+RUN apt-get update
 RUN apt-get install tree
 RUN mkdir ramanji
 RUN cd ramanji
