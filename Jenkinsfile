@@ -32,7 +32,7 @@ pipeline {
     stage('Push Image to Docker Hub') { 
 		agent any
       steps{                            
-	sh 'sudo docker push ramanji1912/jenkins:$BUILD_NUMBER' 
+	sh 'sudo docker push ramanji/spring-petclinic:latest'
 	echo 'Push Image Completed'       
       }           
     } 	
