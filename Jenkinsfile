@@ -35,6 +35,13 @@ pipeline {
 	sh 'sudo docker push ramanji/spring-petclinic:latest'
 	echo 'Push Image Completed'       
       }           
-    } 	
+    }
+    post{
+		always {
+		  sh 'sudo docker logout'
+		  }
+		}
+    }      
+  } 	
   }
 }
