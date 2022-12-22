@@ -2,6 +2,9 @@
 
 pipeline {
 	agent none
+	environment {     
+    DOCKERHUB_CREDENTIALS= credentials('dockerhubcredentials')     
+} 
   stages {
   	stage('Maven Install') {
     	agent {
@@ -19,14 +22,12 @@ pipeline {
       	sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
       }
     }
-	stage('Docker Push') {
-    	agent any
-      steps {
-      	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'Venkat@#19', usernameVariable: 'ramanji1912')]) {
-        	sh "sudo docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh 'sudo docker push shanem/spring-petclinic:latest'
-        }
-      }
-    }
+	stage('Login to Docker Hub') { 
+		agent any
+      steps{                            
+	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                 
+	echo 'Login Completed'                
+      }           
+    }  
   }
 }
