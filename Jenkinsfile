@@ -1,8 +1,7 @@
 #!groovy
 
 pipeline {
-	agent none
-  stages {
+	agent none  stages {
   	stage('Maven Install') {
     	agent {
       	any {
@@ -10,26 +9,25 @@ pipeline {
         }
       }
       steps {
-      	echo "hello ramanji"
+      	sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
       }
     }
     stage('Docker Build') {
     	agent any
       steps {
-        sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
-        sh 'sudo docker -v'
+      	sh 'docker build -t shanem/spring-petclinic:latest .'
+		sh 'sudo docker -v'
         sh 'sudo docker ps'
         sh 'sudo docker images'
       }
     }
-     stage('Docker Push') {
+    stage('Docker Push') {
     	agent any
       steps {
       	withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'Venkat@#19', usernameVariable: 'ramanji1912')]) {
-          sudo sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}'
-          sudo sh 'docker push ramanji/spring-petclinic:latest'
+        	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh 'docker push shanem/spring-petclinic:latest'
         }
       }
     }
   }
-}
