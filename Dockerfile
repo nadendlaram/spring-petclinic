@@ -7,11 +7,11 @@ RUN mkdir /opt/tomcat/
 WORKDIR /opt/tomcat
 RUN apt-get update
 RUN apt-get install wget -y
-RUN wget https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
+RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27-fulldocs.tar.gz
 
-RUN gunzip apache-tomcat-8.5.40.tar.gz
-RUN tar xf apache-tomcat-8.5.40.tar
-RUN mv apache-tomcat-8.5.40/* /opt/tomcat/.
+RUN gunzip apache-tomcat-10.0.27-fulldocs.tar.gz
+RUN tar xf apache-tomcat-10.0.27-fulldocs.tar
+RUN mv apache-tomcat-*/* /opt/tomcat/.
 RUN yum -y install java
 RUN java -version
 
