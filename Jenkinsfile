@@ -23,7 +23,7 @@ pipeline {
     stage('Docker Build') {
     	agent any
       steps {
-      	sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
+      	sh 'sudo docker build -t ${IMAGE_REPO_NAME}:${IMAGE_TAG} .'
       }
     }
     stage('Logging into AWS ECR') {
