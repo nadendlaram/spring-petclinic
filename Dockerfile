@@ -12,7 +12,7 @@ RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.0.27/bin/apache-tomca
 RUN gunzip apache-tomcat-10.0.27-fulldocs.tar.gz
 RUN tar xf apache-tomcat-10.0.27-fulldocs.tar
 RUN mv tomcat-10.0-doc/* /opt/tomcat/.
-RUN apt -y install java
+RUN apt -y install openjdk* -y
 RUN java -version
 
 WORKDIR /opt/tomcat/webapps
