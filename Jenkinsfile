@@ -36,8 +36,8 @@ pipeline {
     stage('Pushing to ECR') { 
 	agent any
       steps{
-        sh 'sudo docker tag images-jenkins:latest 412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images:latest'
-        sh 'sudo docker push 412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images:latest'
+        sh 'sudo docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}'
+        sh 'sudo docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}'
 	echo 'Push Image Completed'       
       }           
     }
