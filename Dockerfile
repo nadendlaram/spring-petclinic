@@ -11,7 +11,7 @@ RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.0.27/bin/apache-tomca
 
 RUN gunzip apache-tomcat-10.0.27-fulldocs.tar.gz
 RUN tar xf apache-tomcat-10.0.27-fulldocs.tar
-RUN mv apache-tomcat-*/* /opt/tomcat/.
+RUN mv apache-tomcat-10.0.27-fulldocs/* /opt/tomcat/.
 RUN yum -y install java
 RUN java -version
 
