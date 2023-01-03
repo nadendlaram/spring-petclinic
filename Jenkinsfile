@@ -4,7 +4,7 @@ pipeline {
 	agent none
 	environment {     
     AWS_ACCOUNT_ID='412937381715'
-    AWS_DEFAULT_REGION=5'ap-northeast-1'
+    AWS_DEFAULT_REGION='ap-northeast-1'
     IMAGE_REPO_NAME='spring-images'
     IMAGE_TAG='latest'
     REPOSITORY_URI = '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}'   
