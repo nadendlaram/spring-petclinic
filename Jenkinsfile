@@ -26,15 +26,15 @@ pipeline {
       	sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
       }
     }
-	stage(‘Logging into AWS ECR’) {
-		agent any
+    stage(‘Logging into AWS ECR’) {
+	agent any
       steps{      
-	sh “aws ecr get-login-password — region ${AWS_DEFAULT_REGION} | docker login — username AWS — password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com”                 
+	sh “sudo aws ecr get-login-password — region ${AWS_DEFAULT_REGION} | docker login — username AWS — password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com”                 
 	echo 'Login Completed'                
       }           
     }
     stage(‘Pushing to ECR’) { 
-		agent any
+	agent any
       steps{                            
 	sh “sudo docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG”
 	sh “sudo docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}”
