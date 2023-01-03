@@ -26,7 +26,7 @@ pipeline {
       	sh 'sudo docker build -t ramanji/spring-petclinic:latest .'
       }
     }
-	stage(‘Logging into AWS ECR’) { 
+	stage(‘Logging into AWS ECR’) {
 		agent any
       steps{      
 	sh “aws ecr get-login-password — region ${AWS_DEFAULT_REGION} | docker login — username AWS — password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com”                 
