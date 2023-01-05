@@ -4,5 +4,5 @@ hooks:
   AfterInstall:
     - location: scripts/DockerBuild.sh
       timeout: 300
-      runas: ec2-user
+      runas: ubuntu
       overwrite: true
