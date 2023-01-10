@@ -10,16 +10,6 @@ pipeline {
     REPOSITORY_URI = '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}'   
 } 
   stages {
-  	stage('Maven Install') {
-    	agent {
-      	any {
-        	image 'maven:3.5.0'
-        }
-      }
-      steps {
-      	echo "hello ramanji"
-      }
-    }
     stage('Docker Build') {
     	agent any
       steps {
