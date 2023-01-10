@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER hello@gritfy.com
+MAINTAINER ramnadendla@gmail.com
 
 RUN mkdir /opt/tomcat/
 
@@ -20,3 +20,4 @@ RUN wget https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.wa
 EXPOSE 8080
 
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+
