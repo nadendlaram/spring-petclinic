@@ -1,0 +1,29 @@
+version: 0.2
+
+run-as: root
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images
+      - IMAGE_TAG=latest
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:$IMAGE_TAG -f Dockerfile .
+      - docker tag $REPOSITORY_URI:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo "Docker Image push to ECR Completed - $REPOSITORY_URI:$IMAGE_TAG"
+      - echo "Docker Image push to ECR Completed - $REPOSITORY_URI:$IMAGE_TAG"
+artifacts:
+    files:
+      - '**/*'
