@@ -9,7 +9,6 @@ phases:
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images
-      - IMAGE_TAG=latest
   build:
     commands:
       - echo Build started on `date`
