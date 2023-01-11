@@ -26,8 +26,8 @@ pipeline {
     stage('Pushing to ECR') { 
 	agent any
       steps{
-        sh 'sudo docker tag images-jenkins:latest 412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images:build_number'
-        sh 'sudo docker push 412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images:build_number'
+        sh 'sudo docker tag images-jenkins:latest 412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images:latest'
+        sh 'sudo docker push 412937381715.dkr.ecr.ap-northeast-1.amazonaws.com/spring-images:latest'
 	echo 'Push Image Completed'       
       }           
     }
