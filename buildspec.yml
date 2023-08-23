@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Build phase: Your build commands go here"
+
+artifacts:
+  files: '**/*'
+  name: my-app-artifacts
